@@ -46,6 +46,15 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 
+// Root endpoint
+app.get("/", (req, res) => {
+	res.status(200).json({
+		message: "Social Media Backend API is running",
+		documentation: "/docs", // Optional: if you have docs served
+		health: "/health",
+	});
+});
+
 // Health check endpoint
 app.get("/health", (req, res) => {
 	res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
